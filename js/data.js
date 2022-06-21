@@ -1,4 +1,4 @@
-[
+const icons = [
 	{
 		name: 'cat',
 		prefix: 'fa-',
@@ -112,3 +112,26 @@
 		color: 'blue'
 	}
 ];
+
+
+const boxContainer = document.querySelector('.container');
+drawElementDom(icons);
+
+// ------------
+// FUNCTION
+// ------------
+
+function drawElementDom (iconsArray) {
+	
+	icons.forEach((element) => {
+		const {name, prefix, type, family, color} = element;
+		const iconsTemplate = 
+		` <div class="box">
+			<i class="${family} + ${prefix}${name}"></i>
+			<div class="name">${name}</div>
+		</div>`;
+
+		boxContainer.innerHTML += iconsTemplate;
+	})
+}
+
