@@ -113,12 +113,19 @@ const icons = [
 	}
 ];
 
+
+// Per ogni elemento dell'array icons assegno al colore la variabile che genera un colore random
+icons.forEach((element) => {
+	element.color = randomColor();
+})
+
 // Variabile che richiama il container all'interno el dom
 const boxContainer = document.querySelector('.container');
 drawElementDom(icons);
 
-
+// Variabile che richiama il select nel dom
 const selectCategory = document.getElementById('category');
+
 
 // ------------
 // EVENT FUNCTION
@@ -144,8 +151,6 @@ selectCategory.addEventListener('change',
 )
 
 
-
-
 // ------------
 // FUNCTION
 // ------------
@@ -167,3 +172,24 @@ function drawElementDom (iconsArray) {
 		boxContainer.innerHTML += iconsTemplate;
 	})
 }
+
+
+// Funzione che genera un colore random
+function randomColor () {
+	// Colore che inizia con #
+	let color = '#';
+	// Tutti i possibili simboli utilizzabili
+	const symbols = '0123456789ABCDEF';
+
+	for(let i = 0; i < 6; i++) {
+		const randomIndex = getRndInteger(0, symbols.length - 1);
+		const randomSymbol = symbols[randomIndex];
+		color += randomSymbol
+	}
+
+	return color;
+}
+
+function getRndInteger(min, max) {
+	return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
