@@ -28,7 +28,21 @@
 
 }
 
+/* Icons */
+
 i {
     font-size: 22px;
     display: inline-block;
+}
+
+#orange {
+    color: orange;
+}
+
+#green {
+    color: green;
+}
+
+#blue {
+    color: blue;
 }

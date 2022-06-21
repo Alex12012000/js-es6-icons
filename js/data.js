@@ -113,7 +113,7 @@ const icons = [
 	}
 ];
 
-
+// Variabile che richiama il container all'interno el dom
 const boxContainer = document.querySelector('.container');
 drawElementDom(icons);
 
@@ -121,16 +121,20 @@ drawElementDom(icons);
 // FUNCTION
 // ------------
 
+
+// Funzione che appende ogni elemento all'interno dell'array indicato come argomento nella funzione
 function drawElementDom (iconsArray) {
-	
-	icons.forEach((element) => {
-		const {name, prefix, type, family, color} = element;
-		const iconsTemplate = 
-		` <div class="box">
-			<i class="${family} + ${prefix}${name}"></i>
+
+	// per ogni elemento all'interno dell'array appendo un template nel dom
+	iconsArray.forEach((element) => {
+		const {name, prefix, type, family, color} = element; //Destrutturazione dell'array
+		// Template
+		const iconsTemplate = `
+		<div class="box">
+			<i class="${family} + ${prefix}${name}" id="${color}"></i>
 			<div class="name">${name}</div>
 		</div>`;
-
+		// Appendo il template nel boxContainer
 		boxContainer.innerHTML += iconsTemplate;
 	})
 }
