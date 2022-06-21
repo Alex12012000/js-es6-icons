@@ -117,6 +117,35 @@ const icons = [
 const boxContainer = document.querySelector('.container');
 drawElementDom(icons);
 
+
+const selectCategory = document.getElementById('category');
+
+// ------------
+// EVENT FUNCTION
+// ------------
+
+selectCategory.addEventListener('change', 
+	function () {
+		const currentValue = this.value;
+		boxContainer.innerHTML = '';
+		
+		if(currentValue !== 'all') {
+			const filterIcons = icons.filter((element) => {
+				return element.type === currentValue;
+			})
+
+			drawElementDom(filterIcons)
+
+		} else {
+
+			drawElementDom(icons)
+		}
+	}
+)
+
+
+
+
 // ------------
 // FUNCTION
 // ------------
@@ -130,12 +159,11 @@ function drawElementDom (iconsArray) {
 		const {name, prefix, type, family, color} = element; //Destrutturazione dell'array
 		// Template
 		const iconsTemplate = `
-		<div class="box">
-			<i class="${family} + ${prefix}${name}" id="${color}"></i>
+		<div class="box" style="color: ${color}">
+			<i class="${family} + ${prefix}${name}"></i>
 			<div class="name">${name}</div>
 		</div>`;
 		// Appendo il template nel boxContainer
 		boxContainer.innerHTML += iconsTemplate;
 	})
 }
-
